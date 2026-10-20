@@ -16,12 +16,12 @@ pipeline {
                     url: 'https://github.com/iamyusuf01/CI-CD-Pipeline-Using-Jenkins-GitHub-Webhook-Ubuntu-EC2-Docker'
                 )
             }
-        }
+        },
         stage('Build Docker Image'){
             steps {
                 sh 'docker build -t $IMAGE_NAME'
             }
-        }
+        },
         stage('Stop & Remove Previous Container'){
             steps {
                 sh '''
@@ -30,7 +30,7 @@ pipeline {
                 
                 '''
             }
-        }
+        },
         stage('Docker Container Run'){
             steps {
                 sh '''
@@ -39,7 +39,7 @@ pipeline {
                 
                 '''
             }
-        }
+        },
         stage('Send Email Notification'){
             steps {
                 emailtext(
@@ -48,6 +48,6 @@ pipeline {
                     to: '${EMAIL}'
                 )
             }
-        }
+        },
     }
 }
